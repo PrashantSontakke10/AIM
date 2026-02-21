@@ -3,8 +3,8 @@ const path = require("path");
 
 // 🔹 FFmpeg should be in the system PATH
 // If not, you can set it manually using ffmpeg.setFfmpegPath()
-ffmpeg.setFfmpegPath("E:\\ffmpeg.exe");
-ffmpeg.setFfprobePath("E:\\ffprobe.exe");
+ffmpeg.setFfmpegPath("D:\\ffmpeg.exe");
+ffmpeg.setFfprobePath("D:\\ffprobe.exe");
 const extractAudio = (videoPath) => {
   return new Promise((resolve, reject) => {
     const audioPath = `uploads/audio_${Date.now()}.mp3`;

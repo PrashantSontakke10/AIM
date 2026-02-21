@@ -48,7 +48,7 @@ const videoSchema = new mongoose.Schema({
     p720: String
   },
 
-  descriptionUrl: {
+  descriptionUrls: {
     english: String,
     hindi: String,
     marathi: String,

@@ -59,3 +59,40 @@ body {
 .animate-delay-1 { animation-delay: 0.1s; }
 .animate-delay-2 { animation-delay: 0.2s; }
 .animate-delay-3 { animation-delay: 0.3s; }
+
+
+
+
+
+
+
+
+
+
+/* Dark Theme Form Inputs */
+input,
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.05);
+  color: #040000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Placeholder color */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Focus effect */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-purple);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+}

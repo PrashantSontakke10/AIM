@@ -69,10 +69,10 @@ exports.uploadVideoByAdmin = async (req, res) => {
     let descriptionUrls = {};
 
     for (const lang in descFilePaths) {
-      const uploaded = await uploadTextFile(descFilePaths[lang]);
-      descriptionUrls[lang] = uploaded.url;
+      const uploadedUrl = await uploadTextFile(descFilePaths[lang]);
+      descriptionUrls[lang] = uploadedUrl;
 
-      // Delete local txt file
+      // Delete local txt file (uploadTextFile already deletes the file; this is a safe no-op)
       deleteLocalFile(descFilePaths[lang]);
     }
 
@@ -112,7 +112,13 @@ exports.uploadVideoByAdmin = async (req, res) => {
       downloadUrl: fileData.downloadUrl,
       attachments,
       quiz,
-      descriptionUrls, // 🔥 5 language URLs
+      descriptionUrls: {
+        english: descriptionUrls.english || "",
+        hindi: descriptionUrls.hindi || "",
+        marathi: descriptionUrls.marathi || "",
+        telugu: descriptionUrls.telugu || "",
+        tamil: descriptionUrls.tamil || ""
+        }, // 🔥 5 language URLs
       size: fileData.size,
       resolutions,
       order
