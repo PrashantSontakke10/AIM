@@ -86,7 +86,8 @@ router.post("/login", async (req, res) => {
         id: user._id,
         fullName: user.fullName,
         email: user.email,
-        role: user.role
+        role: user.role,
+        token
       }
     });
 
@@ -105,8 +106,20 @@ router.post("/logout", (req, res) => {
 
 // ================= PROFILE (Any Logged In User) =================
 router.get("/profile", protect, async (req, res) => {
-  const user = await User.findById(req.user.id).select("-password");
-  res.json(user);
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    return res.status(200).json({
+      message: "Profile fetched successfully",
+      user
+    });
+  } catch (error) {
+    return res.status(500).json({ message: "Failed to fetch profile" });
+  }
 });
 
 
